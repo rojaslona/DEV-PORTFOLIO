@@ -3,11 +3,43 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import { BsCodeSlash, BsEnvelope } from 'react-icons/bs';
 
 const Hero: React.FC = () => {
-  const scrollToSection = (sectionId: string) => {
+  // Scroll helper that respects a fixed navbar by subtracting its height
+  const scrollToSection = (sectionId: string, evt?: MouseEvent) => {
+    console.debug('[hero] scrollToSection called for:', sectionId);
     const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    console.debug('[hero] element found:', !!element, element);
+    if (!element) return;
+
+    if (evt && typeof evt.clientX === 'number') {
+      try {
+        const elems = document.elementsFromPoint(evt.clientX, evt.clientY);
+        const info = elems.slice(0, 8).map((el) => {
+          const rect = (el as HTMLElement).getBoundingClientRect ? (el as HTMLElement).getBoundingClientRect() : null;
+          const style = window.getComputedStyle(el as Element);
+          return {
+            tag: (el as Element).tagName,
+            classes: (el as Element).className,
+            pointerEvents: style.pointerEvents,
+            zIndex: style.zIndex,
+            rect: rect ? { x: rect.x, y: rect.y, w: rect.width, h: rect.height } : null,
+          };
+        });
+        console.debug('[hero] elementsFromPoint at click:', info);
+      } catch (err) {
+        console.debug('[hero] elementsFromPoint error:', err);
+      }
     }
+
+    const navEl = document.querySelector('nav');
+    const navHeight = navEl ? (navEl as HTMLElement).offsetHeight : 0;
+    console.debug('[hero] navHeight:', navHeight);
+
+    const elementTop = element.getBoundingClientRect().top + window.scrollY;
+    const offset = 10; // small gap between section and navbar
+    const targetPosition = Math.max(elementTop - navHeight - offset, 0);
+    console.debug('[hero] elementTop:', elementTop, 'targetPosition:', targetPosition);
+
+    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
   };
 
   return (
@@ -25,19 +57,23 @@ const Hero: React.FC = () => {
               </p>
               <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center">
                 <Button 
-                  variant="purple" 
+                  as="a"
+                  href="#skills"
+                  variant="purple"
                   size="lg" 
                   className="px-4 py-3 fw-semibold"
-                  onClick={() => scrollToSection('skills')}
+                  onClick={(e) => { console.log('[hero] View Skills click handler'); e.preventDefault(); scrollToSection('skills', e); }}
                 >
                   <BsCodeSlash className="me-2" />
                   View Skills
                 </Button>
                 <Button 
-                  variant="outline-light" 
+                  as="a"
+                  href="#contact"
+                  variant="outline-light"
                   size="lg" 
                   className="px-4 py-3 fw-semibold"
-                  onClick={() => scrollToSection('contact')}
+                  onClick={(e) => { console.log('[hero] Contact Me click handler'); e.preventDefault(); scrollToSection('contact', e); }}
                 >
                   <BsEnvelope className="me-2" />
                   Contact Me
@@ -48,15 +84,15 @@ const Hero: React.FC = () => {
         </Row>
         
         {/* Floating elements for visual interest */}
-        <div className="position-absolute top-50 start-0 translate-middle-y d-none d-lg-block">
-          <div 
-            className="bg-purple-custom rounded-circle opacity-25 float-animation" 
+        <div className="position-absolute top-50 start-0 translate-middle-y d-none d-lg-block" style={{ pointerEvents: 'none' }}>
+          <div
+            className="bg-purple-custom rounded-circle opacity-25 float-animation"
             style={{ width: '200px', height: '200px' }}
           />
         </div>
-        <div className="position-absolute bottom-0 end-0 d-none d-lg-block">
-          <div 
-            className="bg-purple-custom rounded-circle opacity-15 float-animation-reverse" 
+        <div className="position-absolute bottom-0 end-0 d-none d-lg-block" style={{ pointerEvents: 'none' }}>
+          <div
+            className="bg-purple-custom rounded-circle opacity-15 float-animation-reverse"
             style={{ 
               width: '300px', 
               height: '300px', 

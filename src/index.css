@@ -25,6 +25,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Navigation height for anchor scrolling */
+  --nav-height: 0px; /* updated dynamically by App.tsx */
 }
 
 * {
@@ -61,6 +64,11 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-purple-light);
+}
+
+/* Ensure native anchor navigation places sections below the fixed navbar (Safari-friendly) */
+section {
+  scroll-margin-top: calc(var(--nav-height, 0px) + 10px);
 }
 
 /* Custom Bootstrap overrides */
@@ -227,6 +235,16 @@ html {
 .theme-toggle:hover {
   background-color: var(--primary-purple);
   transform: rotate(180deg);
+}
+
+/* Ensure fixed navbar is above other elements (helps avoid invisible overlays intercepting clicks) */
+nav, .navbar {
+  z-index: 1300; /* above theme-toggle which is 1200 */
+}
+
+/* Make sure interactive elements are explicitly pointer-enabled */
+.nav-link, .btn, button, a {
+  pointer-events: auto;
 }
 
 /* Light mode overrides */

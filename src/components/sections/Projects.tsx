@@ -31,7 +31,7 @@ const projects: Project[] = [
     ],
     links: {
       github: 'https://github.com/rojaslona',
-      demo: 'https://www.linkedin.com/in/rojaslona',
+      demo: 'https://github.com/rojaslona',
     },
   },
   {

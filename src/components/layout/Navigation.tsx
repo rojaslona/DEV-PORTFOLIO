@@ -15,13 +15,6 @@ const Navigation: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <Navbar 
       expand="lg" 
@@ -33,12 +26,8 @@ const Navigation: React.FC = () => {
     >
       <Container>
         <Navbar.Brand 
-          href="#home" 
+          href="#hero"
           className="gradient-text fw-bold"
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToSection('hero');
-          }}
         >
           Jose Alejandro Rojas Lona
         </Navbar.Brand>
@@ -47,38 +36,11 @@ const Navigation: React.FC = () => {
         
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto align-items-lg-center">
-            <Nav.Link
-              className="text-light-custom"
-              onClick={() => scrollToSection('hero')}
-            >
-              Home
-            </Nav.Link>
-            <Nav.Link 
-              className="text-light-custom"
-              onClick={() => scrollToSection('bio')}
-            >
-              About
-            </Nav.Link>
-            {/* Skills section link */}
-            <Nav.Link
-              className="text-light-custom"
-              onClick={() => scrollToSection('skills')}
-            >
-              Skills
-            </Nav.Link>
-            {/* Projects link */}
-            <Nav.Link
-              className="text-light-custom"
-              onClick={() => scrollToSection('projects')}
-            >
-              Projects
-            </Nav.Link>
-            <Nav.Link 
-              className="text-light-custom"
-              onClick={() => scrollToSection('contact')}
-            >
-              Contact
-            </Nav.Link>
+            <Nav.Link href="#hero" className="text-light-custom">Home</Nav.Link>
+            <Nav.Link href="#bio" className="text-light-custom">About</Nav.Link>
+            <Nav.Link href="#skills" className="text-light-custom">Skills</Nav.Link>
+            <Nav.Link href="#projects" className="text-light-custom">Projects</Nav.Link>
+            <Nav.Link href="#contact" className="text-light-custom">Contact</Nav.Link>
             {/* External links */}
             <div className="d-flex align-items-center ms-lg-3 gap-2">
               <a

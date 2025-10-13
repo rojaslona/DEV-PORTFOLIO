@@ -43,6 +43,15 @@ section:nth-child(even) {
   bottom: 0;
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0 0h100v100H0z" fill="none"/><path d="M20 20l60 60M80 20L20 80" stroke="%236f42c1" stroke-width="0.5" opacity="0.1"/></svg>') repeat;
   opacity: 0.1;
+  /* Ensure the decorative pseudo-element does not intercept clicks */
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ensure hero content sits above decorative pseudo-element so interactive controls receive pointer events */
+.hero-section .fade-in-up {
+  position: relative;
+  z-index: 1;
 }
 
 /* Animate on scroll */
