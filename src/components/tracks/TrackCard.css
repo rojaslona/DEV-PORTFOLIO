@@ -1,0 +1,35 @@
+/* TrackCard specific styles */
+.preview-container {
+  background: var(--medium-gray);
+  border: 1px solid var(--medium-gray);
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.preview-container audio {
+  flex: 1;
+  height: 32px;
+  margin-right: 0.5rem;
+}
+
+.preview-container .preview-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  margin-left: 0.5rem;
+}
+
+/* Ensure audio controls match the card theme */
+.preview-container audio::-webkit-media-controls-panel {
+  background-color: var(--medium-gray);
+}
+
+.preview-container audio::-webkit-media-controls-play-button,
+.preview-container audio::-webkit-media-controls-pause-button {
+  background-color: var(--primary-purple);
+  border-radius: 50%;
+}

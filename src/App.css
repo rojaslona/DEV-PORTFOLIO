@@ -1,0 +1,269 @@
+/* Main App Styles */
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+/* Section spacing */
+section {
+  padding: 80px 0;
+  position: relative;
+}
+
+section:nth-child(even) {
+  background-color: var(--dark-gray);
+}
+
+[data-theme="light"] section:nth-child(even) {
+  background-color: var(--light-gray);
+}
+
+/* Hero section styles */
+.hero-section {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--black) 0%, var(--primary-purple-dark) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0 0h100v100H0z" fill="none"/><path d="M20 20l60 60M80 20L20 80" stroke="%236f42c1" stroke-width="0.5" opacity="0.1"/></svg>') repeat;
+  opacity: 0.1;
+}
+
+/* Animate on scroll */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.animate-on-scroll.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Track card styles */
+.track-card {
+  background: var(--dark-gray);
+  border: 1px solid var(--medium-gray);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.track-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(111, 66, 193, 0.3);
+  border-color: var(--primary-purple);
+}
+
+.track-card .card-img-top {
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.track-card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+/* Service card styles
+.service-card {
+  background: var(--dark-gray);
+  border: 1px solid var(--medium-gray);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(111, 66, 193, 0.2);
+  border-color: var(--primary-purple);
+}
+
+.service-icon {
+  font-size: 3rem;
+  color: var(--primary-purple);
+  margin-bottom: 1rem;
+}
+*/
+/* Contact form styles */
+.contact-form {
+  background: var(--dark-gray);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.form-control {
+  background-color: var(--medium-gray);
+  border: 1px solid var(--medium-gray);
+  color: var(--text-light);
+  border-radius: 8px;
+}
+
+.form-control:focus {
+  background-color: var(--medium-gray);
+  border-color: var(--primary-purple);
+  color: var(--text-light);
+  box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25);
+}
+
+.form-control::placeholder {
+  color: var(--text-muted);
+}
+
+/* Audio player styles */
+.audio-player {
+  background: var(--medium-gray);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.audio-player audio {
+  width: 100%;
+  height: 40px;
+}
+
+/* Platform links */
+.platform-links {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.platform-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary-purple);
+  color: var(--white);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.platform-link:hover {
+  background: var(--primary-purple-light);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* Role badges */
+.role-badge {
+  background: linear-gradient(135deg, var(--primary-purple) 0%, var(--accent-purple) 100%);
+  color: var(--white);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  display: inline-block;
+  margin: 0.25rem 0.25rem 0 0;
+}
+
+/* Navigation styles */
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+  font-weight: 500;
+  margin: 0 0.5rem;
+  transition: color 0.2s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--primary-purple) !important;
+}
+
+/* Ensure icon links in navbar feel as snappy as text links */
+.nav-icon-link {
+  color: var(--text-light) !important;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-icon-link:hover {
+  color: var(--primary-purple) !important;
+}
+
+/* Footer styles */
+.footer {
+  background: var(--dark-gray);
+  padding: 2rem 0;
+  margin-top: auto;
+}
+
+/* Loading states */
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(111, 66, 193, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--primary-purple);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* File upload area */
+.file-upload-area {
+  border: 2px dashed var(--primary-purple);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  background: var(--medium-gray);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.file-upload-area:hover {
+  border-color: var(--primary-purple-light);
+  background: var(--dark-gray);
+}
+
+.file-upload-area.dragover {
+  border-color: var(--accent-purple);
+  background: rgba(111, 66, 193, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  section {
+    padding: 60px 0;
+  }
+  
+  .hero-section {
+    min-height: 70vh;
+  }
+  
+  .theme-toggle {
+    top: 45px;
+    right: 45px;
+    width: 30px;
+    height: 30px;
+  }
+}
