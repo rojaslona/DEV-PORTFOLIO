@@ -4,15 +4,17 @@ import { BsCodeSlash, BsEnvelope } from 'react-icons/bs';
 
 const Hero: React.FC = () => {
   // Scroll helper that respects a fixed navbar by subtracting its height
-  const scrollToSection = (sectionId: string, evt?: MouseEvent) => {
+  const scrollToSection = (sectionId: string, evt?: React.MouseEvent | MouseEvent) => {
     console.debug('[hero] scrollToSection called for:', sectionId);
     const element = document.getElementById(sectionId);
     console.debug('[hero] element found:', !!element, element);
     if (!element) return;
 
-    if (evt && typeof evt.clientX === 'number') {
+    if (evt && typeof (evt as any).clientX === 'number') {
       try {
-        const elems = document.elementsFromPoint(evt.clientX, evt.clientY);
+        const clientX = (evt as any).clientX as number;
+        const clientY = (evt as any).clientY as number;
+        const elems = document.elementsFromPoint(clientX, clientY);
         const info = elems.slice(0, 8).map((el) => {
           const rect = (el as HTMLElement).getBoundingClientRect ? (el as HTMLElement).getBoundingClientRect() : null;
           const style = window.getComputedStyle(el as Element);
