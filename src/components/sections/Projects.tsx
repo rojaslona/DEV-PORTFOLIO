@@ -1,7 +1,8 @@
 import React from 'react';
 import { Container, Row, Col, Card, Button, Badge } from 'react-bootstrap';
 import { BsGithub, BsBoxArrowUpRight } from 'react-icons/bs';
-import { SiReact, SiDjango, SiPython, SiTypescript, SiPostgresql, SiDocker, SiVite, SiPostman } from 'react-icons/si';
+import { SiReact, SiDjango, SiTypescript, SiPostgresql, SiDocker, SiVite, SiPostman } from 'react-icons/si';
+import { DiRust, DiCode } from "react-icons/di";
 
 type Project = {
   id: string;
@@ -40,9 +41,8 @@ const projects: Project[] = [
     description:
       'Audio Plug-in for professional mastering.',
     tech: [
-      { name: 'Django', icon: <SiDjango color="#0C4B33" /> },
-      { name: 'Python', icon: <SiPython color="#3776AB" /> },
-      { name: 'Postman', icon: <SiPostman color="#FF6C37" /> },
+      { name: 'C++', icon: <DiCode color="#0C4B33" /> },
+      { name: 'Rust', icon: <DiRust color="#3776AB" /> },
     ],
     links: {
       github: 'https://github.com/rojaslona',
@@ -57,6 +57,7 @@ const projects: Project[] = [
       { name: 'React', icon: <SiReact color="#61DAFB" /> },
       { name: 'Vite', icon: <SiVite color="#646CFF" /> },
       { name: 'Docker', icon: <SiDocker color="#2496ED" /> },
+	  { name: 'Postman', icon: <SiPostman color="#0C4B33" /> },
     ],
     links: {
       github: 'https://github.com/rojaslona/SPA-REACT',
