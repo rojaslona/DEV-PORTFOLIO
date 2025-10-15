@@ -217,8 +217,9 @@ section {
 
 /* Dark mode toggle styles */
 .theme-toggle {
+  /* position it relative to the navbar height for perfect alignment on all viewports */
   position: fixed;
-  top: 72px; /* below the fixed navbar */
+  top: calc(var(--nav-height, 56px) + 12px);
   right: 20px;
   z-index: 1200; /* above navbar */
   background-color: var(--dark-gray);
@@ -226,15 +227,78 @@ section {
   border-radius: 50%;
   width: 40px;
   height: 40px;
+  display: inline-flex; /* center icon horizontally & vertically */
   align-items: center;
   justify-content: center;
+  padding: 0;
+  line-height: 0;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.2s ease, box-shadow 0.18s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
 
+/* Ensure hover doesn't change layout or size */
 .theme-toggle:hover {
   background-color: var(--primary-purple);
-  transform: rotate(180deg);
+  box-shadow: 0 6px 18px rgba(111,66,193,0.18);
+}
+
+/* Responsive tweak — slightly reduce top offset on smaller screens */
+@media (max-width: 768px) {
+  .theme-toggle {
+    top: calc(var(--nav-height, 56px) + 8px);
+    right: 16px;
+    width: 36px;
+    height: 36px;
+  }
+  .theme-toggle-icon { width: 18px; height: 18px; }
+}
+
+/* Active: slightly reduce shadow to indicate press */
+.theme-toggle:active {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+/* Accessible focus ring */
+.theme-toggle:focus-visible {
+  outline: 3px solid rgba(111,66,193,0.18);
+  outline-offset: 3px;
+}
+
+/* Icon-specific styles and transition (rotate/scale only the icon) */
+.theme-toggle-icon {
+  display: inline-block;
+  width: 20px; /* lock to exact size matching the React icon size */
+  height: 20px;
+  transform-origin: center center; /* ensure rotation uses icon center */
+  transition: transform 0.22s cubic-bezier(.2,.8,.2,1), color 0.18s ease;
+  vertical-align: middle;
+}
+
+/* Make sure the inline SVG doesn't sit on a text baseline and fills the container */
+.theme-toggle-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: currentColor; /* use currentColor for easy color transitions */
+  transform-box: fill-box; /* ensure transforms use the icon's bounding box */
+  transform-origin: center center;
+}
+
+/* Hover state: rotate & slightly scale the icon for a pleasant effect */
+.theme-toggle:hover .theme-toggle-icon {
+  transform: rotate(10deg) scale(1.08);
+  color: var(--white); /* ensure icon becomes visible on purple background */
+}
+
+/* Also ensure the SVG inside the icon uses the current color (for react-icons) */
+.theme-toggle:hover .theme-toggle-icon svg {
+  fill: currentColor;
+}
+
+/* Ensure the icon color updates smoothly */
+.theme-toggle .text-warning, .theme-toggle .text-purple-custom {
+  transition: color 0.25s ease;
 }
 
 /* Ensure fixed navbar is above other elements (helps avoid invisible overlays intercepting clicks) */

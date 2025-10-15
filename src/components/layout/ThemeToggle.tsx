@@ -16,9 +16,9 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ theme, onToggle }) => {
       title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
     >
       {theme === 'dark' ? (
-        <BsSun className="text-warning" size={20} />
+        <BsSun className="theme-toggle-icon text-warning" size={20} />
       ) : (
-        <BsMoon className="text-purple-custom" size={20} />
+        <BsMoon className="theme-toggle-icon text-purple-custom" size={20} />
       )}
     </button>
   );

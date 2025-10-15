@@ -22,7 +22,7 @@ const projects: Project[] = [
     id: 'p1',
     name: 'Portfolio Platform',
     description:
-      'Fullstack portfolio app built with React, TypeScript, and Django REST. Features dark mode, responsive UI, and CMS-like project management.',
+      'Fullstack portfolio app built with React and TypeScript. Features dark mode, responsive UI, and CMS-like project management.',
     tech: [
       { name: 'React', icon: <SiReact color="#61DAFB" /> },
       { name: 'TypeScript', icon: <SiTypescript color="#3178C6" /> },
@@ -31,14 +31,14 @@ const projects: Project[] = [
     ],
     links: {
       github: 'https://github.com/rojaslona',
-      demo: 'https://github.com/rojaslona',
+      demo: 'https://rojaslona.github.io/DEV-PORTFOLIO/',
     },
   },
   {
     id: 'p2',
-    name: 'API Gateway & Auth',
+    name: 'Audio Plug-in',
     description:
-      'Token-based API with Django REST Framework, JWT auth, rate limiting, and Postman collection for automated testing.',
+      'Audio Plug-in for professional mastering.',
     tech: [
       { name: 'Django', icon: <SiDjango color="#0C4B33" /> },
       { name: 'Python', icon: <SiPython color="#3776AB" /> },
@@ -50,17 +50,16 @@ const projects: Project[] = [
   },
   {
     id: 'p3',
-    name: 'Real-time Dashboard',
+    name: 'H&B Beauty Spa e-Commerce',
     description:
-      'Interactive analytics dashboard with WebSocket updates, React charts, and Dockerized services for easy deployment.',
+      'E-commerce website for a beauty spa, featuring product listings, shopping cart, and secure checkout using Django and React.',
     tech: [
       { name: 'React', icon: <SiReact color="#61DAFB" /> },
       { name: 'Vite', icon: <SiVite color="#646CFF" /> },
       { name: 'Docker', icon: <SiDocker color="#2496ED" /> },
     ],
     links: {
-      github: 'https://github.com/rojaslona',
-      demo: 'https://www.linkedin.com/in/rojaslona',
+      github: 'https://github.com/rojaslona/SPA-REACT',
     },
   },
 ];
